@@ -17,6 +17,7 @@ import { SkillFormComponent } from './skill-details/skill-form/skill-form.compon
 import { SkillListComponent } from './skill-details/skill-list/skill-list.component';
 import { SkillService } from './skill-details/skill.service';
 import { NavbarComponent } from './navbar/navbar.component';
+import { GenericTypeaheadComponent } from './generic-typeahead/generic-typeahead.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     ClientFormComponent,
     SkillDetailsComponent,
     SkillFormComponent,
-    NavbarComponent
+    NavbarComponent,
+    GenericTypeaheadComponent
   ],
   providers: [ClientService, SkillService
   ],
