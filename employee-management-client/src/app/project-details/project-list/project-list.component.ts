@@ -3,27 +3,26 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { ClientFormComponent } from '../client-form/client-form.component';
-import { ClientService } from '../client.service';
-import { IClient } from '../IClient';
+import { IProject } from '../IProject';
+import { ProjectFormComponent } from '../project-form/project-form.component';
+import { ProjectService } from '../project.service';
 
 @Component({
-  selector: 'app-client-list',
-  templateUrl: './client-list.component.html',
-  styleUrls: ['./client-list.component.scss']
+  selector: 'app-project-list',
+  templateUrl: './project-list.component.html',
+  styleUrls: ['./project-list.component.scss']
 })
-export class ClientListComponent implements OnInit {
+export class ProjectListComponent implements OnInit {
 
-  constructor(public service: ClientService,
-    private dialog: MatDialog) {
+  constructor(public service: ProjectService,
+    private dialog: MatDialog) { }
 
-  }
   listData!: MatTableDataSource<any>;
-  displayedColumns: string[] = ['clientId', 'clientName', 'clientLocation', 'actions'];
-  rowdata: IClient[] = [];
+  displayedColumns: string[] = ['projectId', 'projectName', 'projectLocation', 'projectLead', 'projectType', 'client', 'actions'];
+  rowdata: IProject[] = [];
 
 
-  dataSource!: MatTableDataSource<ClientFormComponent>;
+  dataSource!: MatTableDataSource<ProjectFormComponent>;
 
   @ViewChild(MatPaginator, { static: true })
   paginator!: MatPaginator;
@@ -31,7 +30,7 @@ export class ClientListComponent implements OnInit {
 
   @ViewChild(MatSort, { static: true })
   sort!: MatSort;
-  @Input() set projects(value: ClientFormComponent[]) {
+  @Input() set projects(value: ProjectFormComponent[]) {
     this.dataSource = new MatTableDataSource(value);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
@@ -40,10 +39,10 @@ export class ClientListComponent implements OnInit {
   searchKey!: string;
 
   ngOnInit() {
-    this.service.getClientData().subscribe(
+    this.service.getProjectData().subscribe(
       list => {
         console.log(list)
-        this.service.clientList = list;
+        this.service.projectList = list;
         this.rowdata = list
         this.listData = new MatTableDataSource(this.rowdata);
         this.listData.sort = this.sort;
@@ -67,7 +66,7 @@ export class ClientListComponent implements OnInit {
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "60%";
-    this.dialog.open(ClientFormComponent, dialogConfig);
+    this.dialog.open(ProjectFormComponent, dialogConfig);
   }
 
   onEdit(row: any) {
@@ -76,7 +75,7 @@ export class ClientListComponent implements OnInit {
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "60%";
-    this.dialog.open(ClientFormComponent, dialogConfig);
+    this.dialog.open(ProjectFormComponent, dialogConfig);
   }
 
 }
