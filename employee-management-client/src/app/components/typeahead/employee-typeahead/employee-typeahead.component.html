@@ -1,0 +1,33 @@
+<div>  
+  <div *ngIf="selected" class="card">
+    <div class="card-header row">
+      <input [(ngModel)]="searchString"
+        [typeahead]="dropDownList"
+        class="form-control col-9"
+        (ngModelChange)="onTypeaheadChanged($event)" disabled="true"/>
+        <span class="col-1"></span>
+        <button class="btn btn-danger col-2" (click)="onClearSelected()">Clear</button>
+    </div>
+    <div class="card-body">
+      <pre>{{selected | json}}</pre>
+    </div>
+  </div>
+  <div *ngIf="!selected" class="card">
+    <div class="card-header row">
+      <input [(ngModel)]="searchString"
+      [typeahead]="dropDownList"
+      class="form-control"
+      (ngModelChange)="onTypeaheadChanged($event)"/>
+    </div>
+      <div class="card-body" *ngIf="dropDown">
+        <div *ngFor="let item of dropDownList">
+          <div class="card" (click)="onDropDownItemClick(item)">
+            <h4 class="card-header">{{item.name}}</h4>
+              <div class="card-body">
+                <pre>{{item | json}}</pre>
+              </div>
+            </div>
+          </div>
+      </div>
+  </div>
+</div>

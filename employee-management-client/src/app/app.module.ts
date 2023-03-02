@@ -17,7 +17,7 @@ import { SkillFormComponent } from './skill-details/skill-form/skill-form.compon
 import { SkillListComponent } from './skill-details/skill-list/skill-list.component';
 import { SkillService } from './skill-details/skill.service';
 import { NavbarComponent } from './navbar/navbar.component';
-import { GenericTypeaheadComponent } from './generic-typeahead/generic-typeahead.component';
+import { GTypeaheadModule } from './components/typeahead/typeahead.module';
 
 @NgModule({
   declarations: [
@@ -28,8 +28,7 @@ import { GenericTypeaheadComponent } from './generic-typeahead/generic-typeahead
     ClientFormComponent,
     SkillDetailsComponent,
     SkillFormComponent,
-    NavbarComponent,
-    GenericTypeaheadComponent
+    NavbarComponent
   ],
   providers: [ClientService, SkillService
   ],
@@ -43,7 +42,8 @@ import { GenericTypeaheadComponent } from './generic-typeahead/generic-typeahead
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    GTypeaheadModule
   ]
 })
 export class AppModule { }

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GenericTypeaheadComponent } from './generic-typeahead.component';
+import { EmployeeTypeaheadComponent } from './employee-typeahead.component';
 
-describe('GenericTypeaheadComponent', () => {
-  let component: GenericTypeaheadComponent;
-  let fixture: ComponentFixture<GenericTypeaheadComponent>;
+describe('EmployeeTypeaheadComponent', () => {
+  let component: EmployeeTypeaheadComponent;
+  let fixture: ComponentFixture<EmployeeTypeaheadComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GenericTypeaheadComponent ]
+      declarations: [ EmployeeTypeaheadComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GenericTypeaheadComponent);
+    fixture = TestBed.createComponent(EmployeeTypeaheadComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
