@@ -8,7 +8,8 @@ import { CreateEmployeeComponent } from './components/employee/create-employee/c
 import { EmployeesComponent } from './components/employee/employees/employees.component';
 import { apiList } from './services/https/api-list';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import{MatTabsModule} from '@angular/material/tabs'
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatStepperModule } from '@angular/material/stepper';
 import { ClientListComponent } from './client-details/client-list/client-list.component';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from './material/material.module';
@@ -21,12 +22,18 @@ import { SkillFormComponent } from './skill-details/skill-form/skill-form.compon
 import { SkillListComponent } from './skill-details/skill-list/skill-list.component';
 import { SkillService } from './skill-details/skill.service';
 import { NavbarComponent } from './navbar/navbar.component';
-import { GTypeaheadModule } from './components/typeahead/typeahead.module';
 import { ProjectDetailsComponent } from './project-details/project-details.component';
 import { ProjectFormComponent } from './project-details/project-form/project-form.component';
 import { ProjectListComponent } from './project-details/project-list/project-list.component';
 import { ProjectService } from './project-details/project.service';
+import { EmployeeProjectDetailsComponent } from './employee-project-details/employee-project-details.component';
+import { EmployeeProjectService } from './employee-project-details/EmployeeProjectService';
 import { EditEmployeeComponent } from './components/employee/edit-employee/edit-employee.component';
+import { ToastrModule } from 'ngx-toastr';
+import { EmployeeProjectFormComponent } from './employee-project-details/employee-project-form/employee-project-form.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -43,9 +50,17 @@ import { EditEmployeeComponent } from './components/employee/edit-employee/edit-
     ProjectDetailsComponent,
     ProjectFormComponent,
     ProjectListComponent,
-    EditEmployeeComponent
+    EmployeeProjectDetailsComponent,
+    EditEmployeeComponent,
+    EmployeeProjectFormComponent
   ],
-  providers: [ClientService, SkillService, ProjectService,apiList],
+  providers: [
+    ClientService,
+    SkillService,
+    ProjectService,
+    apiList,
+    EmployeeProjectService,
+  ],
   bootstrap: [AppComponent],
   // entryComponents: [SkillDetailsComponent],
   imports: [
@@ -53,17 +68,16 @@ import { EditEmployeeComponent } from './components/employee/edit-employee/edit-
     AppRoutingModule,
     BrowserAnimationsModule,
     MatTabsModule,
+    MatStepperModule,
     FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule, 
-    CommonModule,
-    MaterialModule,
-    BrowserAnimationsModule,
+    MatGridListModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule,
-    BrowserAnimationsModule,
-    GTypeaheadModule
-  ]
+    MatAutocompleteModule,
+    MatChipsModule,
+    CommonModule,
+    MaterialModule,
+    ToastrModule.forRoot(),
+  ],
 })
 export class AppModule {}
